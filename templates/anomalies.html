@@ -1,0 +1,111 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="page-header">
+
+<h1>
+Anomaly Detection Center
+</h1>
+
+<p>
+Detect unusual business transactions
+</p>
+
+</div>
+
+<div class="metric-card">
+
+<h2>
+{{ total_anomalies }}
+</h2>
+
+<p>
+Anomalous Transactions Found
+</p>
+
+</div>
+
+<div class="chart-card">
+
+{{ anomaly_chart|safe }}
+
+</div>
+
+<div class="chart-card">
+
+<h2>
+Top Anomalies
+</h2>
+
+<table class="table">
+
+<tr>
+
+<th>Order ID</th>
+<th>Sales</th>
+<th>Profit</th>
+<th>Discount</th>
+<th>Category</th>
+
+</tr>
+
+{% for row in anomalies_table %}
+
+<tr>
+
+<td>{{ row['Order ID'] }}</td>
+
+<td>
+₹{{ row['Sales']|round(2) }}
+</td>
+
+<td>
+₹{{ row['Profit']|round(2) }}
+</td>
+
+<td>
+{{ row['Discount'] }}
+</td>
+
+<td>
+{{ row['Category'] }}
+</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+</div>
+
+<div class="chart-card">
+
+<h2>
+Business Interpretation
+</h2>
+
+<ul>
+
+<li>
+These transactions behave differently than normal orders.
+</li>
+
+<li>
+Investigate high sales with low profit.
+</li>
+
+<li>
+Review abnormal discounts.
+</li>
+
+<li>
+Analyze risky products and categories.
+</li>
+
+</ul>
+
+</div>
+
+{% endblock %}

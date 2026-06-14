@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block title %}Sales Forecast — Retail Intelligence{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1>Sales Forecast</h1>
+    <p>30-day ahead sales prediction using your trained forecast model</p>
+</div>
+
+<!-- Forecast KPIs -->
+<div class="row g-3 mb-4">
+    <div class="col-md-4">
+        <div class="stat-card">
+            <div class="icon" style="background:rgba(110,231,183,0.1);color:var(--accent)">
+                <i class="bi bi-calendar-check"></i>
+            </div>
+            <div class="label">Forecast Period</div>
+            <div class="value" style="font-size:18px">Next 30 Days</div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="stat-card">
+            <div class="icon" style="background:rgba(129,140,248,0.1);color:var(--accent2)">
+                <i class="bi bi-graph-up-arrow"></i>
+            </div>
+            <div class="label">Predicted Total Sales</div>
+            <div class="value" style="color:var(--accent2)">₹{{ predicted_total }}</div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="stat-card">
+            <div class="icon" style="background:rgba(251,146,60,0.1);color:var(--accent3)">
+                <i class="bi bi-arrow-up-right"></i>
+            </div>
+            <div class="label">Growth vs Last Month</div>
+            <div class="value" style="color:var(--accent3)">{{ growth_pct }}%</div>
+        </div>
+    </div>
+</div>
+
+<!-- Forecast Chart -->
+<div class="row g-3">
+    <div class="col-12">
+        <div class="chart-card">
+            <h6>Historical + Forecasted Sales</h6>
+            {{ forecast_chart|safe }}
+        </div>
+    </div>
+</div>
+{% endblock %}

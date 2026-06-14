@@ -1,0 +1,171 @@
+{% extends "base.html" %}
+{% block title %}Profit Prediction{% endblock %}
+
+{% block content %}
+
+<div class="page-header mb-4">
+    <h1>AI Profit Prediction Center</h1>
+    <p>Predict whether a retail order will generate profit or loss and receive business recommendations.</p>
+</div>
+
+<div class="row">
+
+```
+<div class="col-lg-8">
+
+    <div class="dashboard-card p-4">
+
+        <h4 class="mb-4">
+            <i class="bi bi-lightning-charge-fill"></i>
+            Order Information
+        </h4>
+
+        <form action="/predict" method="POST">
+
+            <div class="row g-3">
+
+                <div class="col-md-4">
+                    <label>Sales Amount</label>
+                    <input type="number" step="0.01" class="form-control" name="sales" required>
+                </div>
+
+                <div class="col-md-4">
+                    <label>Quantity</label>
+                    <input type="number" class="form-control" name="quantity" required>
+                </div>
+
+                <div class="col-md-4">
+                    <label>Discount</label>
+                    <input type="number" step="0.01" class="form-control" name="discount" required>
+                </div>
+
+                <div class="col-md-3">
+                    <label>Ship Mode</label>
+                    <select class="form-select" name="ship_mode">
+                        <option value="0">First Class</option>
+                        <option value="1">Same Day</option>
+                        <option value="2">Second Class</option>
+                        <option value="3">Standard Class</option>
+                    </select>
+                </div>
+
+                <div class="col-md-3">
+                    <label>Segment</label>
+                    <select class="form-select" name="segment">
+                        <option value="0">Consumer</option>
+                        <option value="1">Corporate</option>
+                        <option value="2">Home Office</option>
+                    </select>
+                </div>
+
+                <div class="col-md-3">
+                    <label>Region</label>
+                    <select class="form-select" name="region">
+                        <option value="0">Central</option>
+                        <option value="1">East</option>
+                        <option value="2">South</option>
+                        <option value="3">West</option>
+                    </select>
+                </div>
+
+                <div class="col-md-3">
+                    <label>Category</label>
+                    <select class="form-select" name="category">
+                        <option value="0">Furniture</option>
+                        <option value="1">Office Supplies</option>
+                        <option value="2">Technology</option>
+                    </select>
+                </div>
+
+                <div class="col-md-6">
+                    <label>Sub Category</label>
+                    <select class="form-select" name="subcategory">
+                        <option value="0">Accessories</option>
+                        <option value="1">Appliances</option>
+                        <option value="2">Art</option>
+                        <option value="3">Binders</option>
+                        <option value="4">Bookcases</option>
+                        <option value="5">Chairs</option>
+                        <option value="6">Copiers</option>
+                        <option value="7">Envelopes</option>
+                        <option value="8">Fasteners</option>
+                        <option value="9">Furnishings</option>
+                        <option value="10">Labels</option>
+                        <option value="11">Machines</option>
+                        <option value="12">Paper</option>
+                        <option value="13">Phones</option>
+                        <option value="14">Storage</option>
+                        <option value="15">Supplies</option>
+                        <option value="16">Tables</option>
+                    </select>
+                </div>
+
+                <div class="col-12 mt-4">
+                    <button class="btn btn-success btn-lg w-100">
+                        <i class="bi bi-cpu-fill"></i>
+                        Run AI Prediction
+                    </button>
+                </div>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+<div class="col-lg-4">
+
+    <div class="dashboard-card p-4">
+
+        <h4>Prediction Insights</h4>
+
+        {% if result is not none %}
+
+            {% if result == 1 %}
+
+            <div class="alert alert-success mt-4">
+                <h3>📈 High Profit</h3>
+                <p>This order is expected to generate strong profit.</p>
+            </div>
+
+            {% else %}
+
+            <div class="alert alert-danger mt-4">
+                <h3>📉 Low Profit / Loss Risk</h3>
+                <p>This order may generate low profit or loss.</p>
+            </div>
+
+            {% endif %}
+
+        {% else %}
+
+        <div class="text-center mt-5">
+            <h1>🤖</h1>
+            <p>Submit an order to receive AI insights.</p>
+        </div>
+
+        {% endif %}
+
+    </div>
+
+    <div class="dashboard-card p-4 mt-4">
+
+        <h5>Business Recommendation</h5>
+
+        <ul>
+            <li>Reduce discounts above 20%</li>
+            <li>Promote Technology products</li>
+            <li>Focus on profitable regions</li>
+            <li>Monitor low performing categories</li>
+        </ul>
+
+    </div>
+
+</div>
+```
+
+</div>
+
+{% endblock %}

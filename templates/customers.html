@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block title %}Customer Segments — Retail Intelligence{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1>Customer Segments</h1>
+    <p>KMeans clustering — {{ total_customers }} customers across {{ n_clusters }} segments</p>
+</div>
+
+<!-- Cluster Summary Cards -->
+<div class="row g-3 mb-4">
+    {% for cluster in cluster_summary %}
+    <div class="col-md-3">
+        <div class="stat-card">
+            <div class="icon" style="background:rgba({{ cluster.color_rgb }},0.12);color:rgb({{ cluster.color_rgb }})">
+                <i class="bi bi-people-fill"></i>
+            </div>
+            <div class="label">Segment {{ cluster.id }}</div>
+            <div class="value" style="font-size:20px">{{ cluster.name }}</div>
+            <div style="font-size:13px;color:var(--muted);margin-top:6px">
+                {{ cluster.count }} customers &nbsp;·&nbsp; Avg Sales: ₹{{ cluster.avg_sales }}
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<!-- Charts -->
+<div class="row g-3">
+    <div class="col-md-6">
+        <div class="chart-card">
+            <h6>Customer Distribution by Segment</h6>
+            {{ cluster_pie|safe }}
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="chart-card">
+            <h6>Avg Sales vs Avg Profit by Segment</h6>
+            {{ cluster_bar|safe }}
+        </div>
+    </div>
+    <div class="col-12">
+        <div class="chart-card">
+            <h6>Customer Scatter — Sales vs Profit (colored by segment)</h6>
+            {{ scatter_chart|safe }}
+        </div>
+    </div>
+</div>
+{% endblock %}

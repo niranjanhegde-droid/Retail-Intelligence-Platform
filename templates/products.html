@@ -1,0 +1,121 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="page-header">
+    <h1>Product Analytics</h1>
+    <p>Product performance and profitability analysis</p>
+</div>
+
+<div class="grid">
+
+<div class="chart-card">
+        <h2>Top Selling Products</h2>
+
+    <table class="table">
+        <tr>
+            <th>Product</th>
+            <th>Sales</th>
+        </tr>
+
+        {% for product,sales in top_products.items() %}
+        <tr>
+            <td>{{ product }}</td>
+            <td>₹{{ sales|round(2) }}</td>
+        </tr>
+        {% endfor %}
+
+    </table>
+
+</div>
+
+<div class="chart-card">
+        <h2>Loss Making Products</h2>
+
+    <table class="table">
+
+        <tr>
+            <th>Product</th>
+            <th>Profit</th>
+        </tr>
+
+        {% for product,profit in loss_products.items() %}
+
+        <tr>
+            <td>{{ product }}</td>
+            <td style="color:red">
+                ₹{{ profit|round(2) }}
+            </td>
+        </tr>
+
+        {% endfor %}
+
+    </table>
+
+</div>
+
+</div>
+
+<div class="card mt-4">
+
+    <h2>High Sales But Low Profit Products</h2>
+
+    <table class="table">
+
+        <tr>
+            <th>Product</th>
+            <th>Sales</th>
+            <th>Profit</th>
+        </tr>
+
+        {% for p in problem_products %}
+
+        <tr>
+
+            <td>
+                {{ p['Product Name'] }}
+            </td>
+
+            <td>
+                ₹{{ p['Sales']|round(2) }}
+            </td>
+
+            <td>
+                ₹{{ p['Profit']|round(2) }}
+            </td>
+
+        </tr>
+
+        {% endfor %}
+
+    </table>
+
+</div>
+
+<div class="card mt-4">
+
+    <h2>Business Recommendations</h2>
+
+    <ul>
+
+        <li>
+            Focus marketing on top-selling products.
+        </li>
+
+        <li>
+            Investigate loss-making products.
+        </li>
+
+        <li>
+            Reduce excessive discounts.
+        </li>
+
+        <li>
+            Increase inventory for profitable products.
+        </li>
+
+    </ul>
+
+</div>
+
+{% endblock %}

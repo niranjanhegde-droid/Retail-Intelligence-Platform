@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="page-header">
+    <h1>Business Insights</h1>
+    <p>Automated retail recommendations</p>
+</div>
+
+<div class="grid">
+
+<div class="chart-card">        <h3>Top Category</h3>
+        <h1>{{ top_category }}</h1>
+    </div>
+
+<div class="chart-card">        <h3>Most Profitable Region</h3>
+        <h1>{{ top_region }}</h1>
+    </div>
+
+<div class="chart-card">        <h3>Loss Making Sub Category</h3>
+        <h1>{{ worst_subcategory }}</h1>
+    </div>
+
+<div class="chart-card">        <h3>Best Customer</h3>
+        <h1>{{ best_customer }}</h1>
+    </div>
+
+</div>
+
+<div class="card mt-4">
+
+    <h2>AI Recommendations</h2>
+
+    <ul>
+        <li>Increase inventory for {{ top_category }}</li>
+        <li>Focus marketing in {{ top_region }}</li>
+        <li>Review pricing strategy of {{ worst_subcategory }}</li>
+        <li>Create loyalty rewards for top customers</li>
+    </ul>
+
+</div>
+
+{% endblock %}

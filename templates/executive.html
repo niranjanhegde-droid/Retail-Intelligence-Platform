@@ -1,0 +1,107 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="page-header">
+
+    <h1>
+        Executive Intelligence Center
+    </h1>
+
+    <p>
+        Enterprise Business Summary
+    </p>
+
+</div>
+
+<div class="stats-grid">
+
+<div class="stat-card">
+        <h4>
+            Business Health Score
+        </h4>
+
+        <h1>
+            {{ health_score }}/100
+        </h1>
+
+    </div>
+
+<div class="stat-card">
+        <h4>
+            Profit Margin
+        </h4>
+
+        <h1>
+            {{ profit_margin }}%
+        </h1>
+
+    </div>
+
+</div>
+
+<div class="chart-card">
+
+<h2>
+Business Highlights
+</h2>
+
+<ul>
+
+<li>
+Top Category :
+<b>{{ top_category }}</b>
+</li>
+
+<li>
+Weak Category :
+<b>{{ worst_category }}</b>
+</li>
+
+<li>
+Best Region :
+<b>{{ top_region }}</b>
+</li>
+
+<li>
+Weak Region :
+<b>{{ worst_region }}</b>
+</li>
+
+</ul>
+
+</div>
+
+<div class="chart-card">
+
+<h2>
+AI Recommendations
+</h2>
+
+<ul>
+
+<li>
+Increase focus on {{ top_category }}
+</li>
+
+<li>
+Review performance of {{ worst_category }}
+</li>
+
+<li>
+Expand operations in {{ top_region }}
+</li>
+
+<li>
+Improve profitability in {{ worst_region }}
+</li>
+
+<li>
+Optimize discounts on low-profit products
+</li>
+
+</ul>
+
+</div>
+
+{% endblock %}
