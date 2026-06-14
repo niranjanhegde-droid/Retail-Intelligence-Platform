@@ -8,7 +8,7 @@ A comprehensive Retail Analytics and Business Intelligence platform developed us
 
 Render Deployment: *(Add your Render URL here)*
 
-GitHub Repository: *([Add your GitHub URL here](https://github.com/niranjanhegde-droid/Retail-Intelligence-Platform))*
+GitHub Repository: *((https://github.com/niranjanhegde-droid/Retail-Intelligence-Platform))*
 
 ---
 
